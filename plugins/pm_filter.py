@@ -1003,12 +1003,15 @@ async def cb_handler(client: Client, query: CallbackQuery):
         )
         await query.message.edit_text(
             text="▣ ▣ ▣"
-        )       
-        await query.message.edit_text(
-            text=script.ALL_FILTERS.format(query.from_user.mention),
-            reply_markup=reply_markup,
-            parse_mode=enums.ParseMode.HTML
-        )
+        ) 
+        if query.from_user.id in ADMINS:
+            await query.message.edit_text(
+                text=script.ALL_FILTERS.format(query.from_user.mention),
+                reply_markup=reply_markup,
+                parse_mode=enums.ParseMode.HTML
+            )
+        else:
+            await query.answer("Your Not Authorizer ⚠️", show_alert=True)
 
     elif query.data == "global_filters":
         buttons = [[
