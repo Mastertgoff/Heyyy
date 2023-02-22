@@ -914,16 +914,16 @@ async def cb_handler(client: Client, query: CallbackQuery):
 
     elif query.data == "start":
         buttons = [[
-            InlineKeyboardButton('〆 ᴀᴅᴅ ᴍᴇ ᴛᴏ ʏᴏᴜʀ ɢʀᴏᴜᴘ 〆', url=f'http://t.me/{temp.U_NAME}?startgroup=true')
+            InlineKeyboardButton('+ ᴀᴅᴅ ᴍᴇ ᴛᴏ ʏᴏᴜʀ ɢʀᴏᴜᴘ +', url=f'http://t.me/{temp.U_NAME}?startgroup=true')
             ],[
-            InlineKeyboardButton('sᴇᴀʀᴄʜ​', switch_inline_query_current_chat=''),
-            InlineKeyboardButton('♚ ᴏᴡɴᴇʀ ♚', callback_data='owner_info')
+            InlineKeyboardButton('ᴍᴏᴠɪᴇ ɢʀᴏᴜᴘ', url='https://t.me/MaSTeR_filims'),
+            InlineKeyboardButton('♚ ᴏᴡɴᴇʀ ♚', url='https://t.me/Master_brooi')
             ],[      
-            InlineKeyboardButton('〄 ʜᴇʟᴘ 〄', callback_data='help2'),
-            InlineKeyboardButton('⍟ ᴀʙᴏᴜᴛ ⍟', callback_data='about')
+            InlineKeyboardButton('〄 ʜᴇʟᴘ 〄', callback_data='help'),
+            InlineKeyboardButton('⍟ ᴀʙᴏᴜᴛ ⍟', callback_data='abouut')
             ],[
-            InlineKeyboardButton('⌬ sᴜᴘᴘᴏʀᴛ ⌬', callback_data='support_group')
-        ]]                          
+            InlineKeyboardButton('⌬ sᴜᴘᴘᴏʀᴛ ⌬', url='https://t.me/botsupportgroupmst')
+        ]]         
         reply_markup = InlineKeyboardMarkup(buttons)
         await client.edit_message_media(
             query.message.chat.id, 
@@ -948,16 +948,16 @@ async def cb_handler(client: Client, query: CallbackQuery):
 
     elif query.data == "group_info":
         buttons = [[
-            InlineKeyboardButton('Mᴀsᴛᴇʀ Bᴏᴛ Lᴏɢs', url="https://t.me"),
-        ],[
-            InlineKeyboardButton('Gʀᴏᴜᴘ', url="https://t.me/at3movies"),
-            InlineKeyboardButton('Cʜᴀɴɴᴇʟ', url="https://t.me/CinemaKovilakam")
-        ],[
-            InlineKeyboardButton('Uᴘᴅᴀᴛᴇs', url="https://t.me/MLZ_BOTZ"),
-            InlineKeyboardButton('Sᴜᴘᴘᴏʀᴛ', url="https://t.me/MLZ_BOTZ_SUPPORT")
-        ],[
-            InlineKeyboardButton('⇍ʙᴀᴄᴋ​', callback_data='about')
-        ]]
+            InlineKeyboardButton('+ ᴀᴅᴅ ᴍᴇ ᴛᴏ ʏᴏᴜʀ ɢʀᴏᴜᴘ +', url=f'http://t.me/{temp.U_NAME}?startgroup=true')
+            ],[
+            InlineKeyboardButton('ᴍᴏᴠɪᴇ ɢʀᴏᴜᴘ', url='https://t.me/MaSTeR_filims'),
+            InlineKeyboardButton('♚ ᴏᴡɴᴇʀ ♚', url='https://t.me/Master_brooi')
+            ],[      
+            InlineKeyboardButton('〄 ʜᴇʟᴘ 〄', callback_data='help'),
+            InlineKeyboardButton('⍟ ᴀʙᴏᴜᴛ ⍟', callback_data='abouut')
+            ],[
+            InlineKeyboardButton('⌬ sᴜᴘᴘᴏʀᴛ ⌬', url='https://t.me/botsupportgroupmst')
+        ]]         
         
         reply_markup = InlineKeyboardMarkup(buttons)
         await client.edit_message_media(
