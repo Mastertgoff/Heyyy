@@ -11,3 +11,26 @@ async def stop_button(bot, message):
     await asyncio.sleep(3)
     await msg.edit("**✅️ 𝙱𝙾𝚃 𝙸𝚂 𝚁𝙴𝚂𝚃𝙰𝚁𝚃𝙴𝙳. 𝙽𝙾𝚆 𝚈𝙾𝚄 𝙲𝙰𝙽 𝚄𝚂𝙴 𝙼𝙴**")
     os.execl(sys.executable, sys.executable, *sys.argv)
+    
+@Client.on_message(filters.private & filters.command("status") & filters.user(ADMINS))          
+async def stats(bot, update):
+    currentTime = time.strftime("%Hh%Mm%Ss", time.gmtime(time.time() - BOT_START_TIME))
+    total, used, free = shutil.disk_usage(".")
+    total = humanbytes(total)
+    used = humanbytes(used)
+    free = humanbytes(free)
+    cpu_usage = psutil.cpu_percent()
+    ram_usage = psutil.virtual_memory().percent
+    disk_usage = psutil.disk_usage('/').percent
+
+    ms_g = f"""<b><u>Bot Status</b></u>
+Uptime: <code>{currentTime}</code>
+CPU Usage: <code>{cpu_usage}%</code>
+RAM Usage: <code>{ram_usage}%</code>
+Total Disk Space: <code>{total}</code>
+Used Space: <code>{used} ({disk_usage}%)</code>
+Free Space: <code>{free}</code> """
+
+    msg = await bot.send_message(chat_id=update.chat.id, text="__Processing...__", parse_mode=enums.ParseMode.MARKDOWN)         
+    await msg.edit_text(text=ms_g, parse_mode=enums.ParseMode.HTML)
+    
