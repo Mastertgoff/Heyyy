@@ -30,6 +30,7 @@ pyshorteners
 countryinfo
 datetime
 pytz
+psutil
 dnspython
 aiohttp
 python-math
