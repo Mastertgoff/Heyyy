@@ -954,7 +954,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             InlineKeyboardButton('♚ ᴏᴡɴᴇʀ ♚', url='https://t.me/Master_brooi')
             ],[      
             InlineKeyboardButton('〄 ʜᴇʟᴘ 〄', callback_data='help'),
-            InlineKeyboardButton('⍟ ᴀʙᴏᴜᴛ ⍟', callback_data='abouut')
+            InlineKeyboardButton('⍟ ᴀʙᴏᴜᴛ ⍟', callback_data='about')
             ],[
             InlineKeyboardButton('⌬ sᴜᴘᴘᴏʀᴛ ⌬', url='https://t.me/botsupportgroupmst')
         ]]         
@@ -1199,12 +1199,16 @@ async def cb_handler(client: Client, query: CallbackQuery):
         )
         await query.message.edit_text(
             text="▣ ▣ ▣"
-        )       
-        await query.message.edit_text(
-            text=script.ABOUT_TXT.format(temp.B_NAME),
-            reply_markup=reply_markup,
-            parse_mode=enums.ParseMode.HTML
         )
+        if query.from_user.id in ADMINS:
+            await query.message.edit_text(
+                text=script.ABOUT_TXT.format(temp.B_NAME),
+                reply_markup=reply_markup,
+                parse_mode=enums.ParseMode.HTML
+            )
+        else:
+            await query.answer("Your Not Authorizer ⚠️", show_alert=True)
+
     elif query.data == "source":
         buttons = [[
             InlineKeyboardButton('⇍ʙᴀᴄᴋ', callback_data='about')
