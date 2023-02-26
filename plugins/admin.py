@@ -53,6 +53,21 @@ def paste(text):
     res = post(url, data={"content": text, "extension": "txt"})
     return f"https://spaceb.in/{res.json()['payload']['id']}"
 
+@Client.on_message(filters.user(ADMINS) & filters.command("sh", prefixes=['/', '.', '?', '-']) & filters.private)
+def sh(_, m: Message):
+    try:
+        code = m.text.replace(m.text.split(" ")[0], "")
+        x = run(code)
+        m.reply(
+              f"SHELL: {code}\n\nOUTPUT:\n{x}­­")
+        x = paste(x)
+        m.reply("7.4.0" + x)
+    except Exception as e :
+        pass
+        x = paste(x)
+        h = m.reply(x)
+        m.reply(e)
+
 @Client.on_message(filters.user(ADMINS) & filters.command("eval"))
 async def eval(client, message):
     status_message = await message.reply_text("Processing ...")
