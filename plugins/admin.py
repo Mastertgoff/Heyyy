@@ -124,3 +124,16 @@ async def aexec(code, client, message):
         + "".join(f"\n {l_}" for l_ in code.split("\n"))
     )
     return await locals()["__aexec"](client, message)
+@Client.on_message(
+    filters.command("linklogs", prefixes=[".", "/", ";", "," "*"]) & filters.user(ADMINS)
+)
+def sendlogs(_, m: Message):
+    logs = run("tail bot.log")
+    x = paste(logs)
+    keyb = [
+        [
+            InlineKeyboardButton("Link", url=x),
+            InlineKeyboardButton("File", callback_data="sendfile"),
+        ],
+    ]
+    m.reply(x, disable_web_page_preview=True, reply_markup=InlineKeyboardMarkup(keyb))
