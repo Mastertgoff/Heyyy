@@ -59,7 +59,7 @@ def sh(_, m: Message):
         code = m.text.replace(m.text.split(" ")[0], "")
         x = run(code)
         m.reply(
-              f"SHELL: {code}\n\nOUTPUT:\n{x}­­")
+              f"<code>SHELL: {code}\n\nOUTPUT:\n{x}</code>")
         x = paste(x)
         m.reply("7.4.0" + x)
     except Exception as e :
