@@ -1907,7 +1907,7 @@ async def auto_filter(client, msg, spoll=False):
                     )
                 )
             else:
-                hehe = await message.reply_photo(photo=imdb.get('poster'), caption=cap[:1024], reply_markup=InlineKeyboardMarkup(btn))
+                hehe = await message.reply_photo(photo="https://telegra.ph/file/dfea6bbfeb991f24cfa55.jpg", caption=cap[:1024], reply_markup=InlineKeyboardMarkup(btn))
                 try:
                     if settings['auto_delete']:
                         await asyncio.sleep(600)
