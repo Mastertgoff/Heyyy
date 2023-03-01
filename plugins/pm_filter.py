@@ -1894,7 +1894,7 @@ async def auto_filter(client, msg, spoll=False):
             **locals()
         )
     else:
-        cap = f"🎪 ᴛɪᴛɪʟᴇ {search}\n\n┏ 🤴 ᴀsᴋᴇᴅʙʏ : {message.from_user.mention}\n┣⚡ ᴘᴏᴡᴇʀᴇᴅ ʙʏ : <a href='https://t.me/{temp.U_NAME}'>ᴍᴀsᴛᴇʀ​</a>\n┗🍁 ᴄʜᴀɴɴᴇʟ : <a href='https://t.me/MLZ_BOTZ'>ᴄᴢᴅʙᴏᴛᴢ​​</a>\n\nᴀꜰᴛᴇʀ 10 ᴍɪɴᴜᴛᴇꜱ ᴛʜɪꜱ ᴍᴇꜱꜱᴀɢᴇ ᴡɪʟʟ ʙᴇ ᴀᴜᴛᴏᴍᴀᴛɪᴄᴀʟʟʏ ᴅᴇʟᴇᴛᴇᴅ🗑️\n\n★ ᴘᴏᴡᴇʀᴇᴅ ʙʏ : {message.chat.title}</b>"
+        cap = f"<b>📟 Movie Name : {search}\n\n┏ 🤴 ᴀsᴋᴇᴅ ʙʏ : {message.from_user.mention}\n┣ ᴘᴏᴡᴇʀᴇᴅ ʙʏ: ᴡᴀᴢᴇᴇᴍ​⚡️\n┗ 🍁 ɢʀᴏᴜᴘ​ : 𝐅𝐢𝐥𝐢𝐦 𝐇𝐨𝐦𝐞\n\nJoin Now <a href='https://t.me/sinimapremi '>Main Channel</a> </b>"
     if imdb and imdb.get('poster'):
         try:
             if message.chat.id == SUPPORT_CHAT_ID:
