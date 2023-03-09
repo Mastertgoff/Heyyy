@@ -14,4 +14,4 @@ async def setvarrrz(bot, message):
     data = message.text        
     command, varname, value = data.split(" ")
     config = app.config()
-    config[f'{varname}'] = f'{value}'
+    config[varname] = value
