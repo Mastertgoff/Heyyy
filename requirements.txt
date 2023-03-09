@@ -7,7 +7,7 @@ umongo==3.0.1
 requests
 bs4
 git+https://github.com/Joelkb/cinemagoer
-Heroku3
+heroku3 5.2.0
 search_engine_parser
 wget
 aiofiles
