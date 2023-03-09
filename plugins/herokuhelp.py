@@ -15,6 +15,6 @@ async def setvarrrz(bot, message):
     data = message.text        
     command, varname, value = data.split(" ")
     config = app.config()
-    await ms.edit(text=f"<b>Completed..\nAdded New Varible In Heroku..\n\n Var Name : {varname}\nValue : {value}</b>"
+    await ms.edit(text=f"<b>Completed..\nAdded New Varible In Heroku..\n\n Var Name : {varname}\nValue : {value}</b>")
     config[varname] = value
     
