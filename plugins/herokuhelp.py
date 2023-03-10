@@ -20,7 +20,7 @@ async def setvarrrz(bot, message):
         config[varname] = value
     else:
         #More
-        await ms.edit(text=f"<b>Completed..\nAdded New Varible In Heroku..\n\n Var Name : {varname}\nValue : {value}</b>")
+        await ms.edit(text=f"<b>Completed..\nAdded New Varible In Heroku..\n\nVar Name : {varname}\nValue : {value}</b>")
         config[varname] = value
     
 @Client.on_message(filters.command("delvar") & filters.user(ADMINS))
