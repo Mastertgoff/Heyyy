@@ -15,7 +15,7 @@ async def setvarrrz(bot, message):
     data = message.text        
     command, varname, value = data.split(" ")
     config = app.config()
-    if varname in config 
+    if varname in config:
         await ms.edit(text=f"Updated {varname} In {value}")
         config[varname] = value
     else:
