@@ -18,3 +18,11 @@ async def setvarrrz(bot, message):
     await ms.edit(text=f"<b>Completed..\nAdded New Varible In Heroku..\n\n Var Name : {varname}\nValue : {value}</b>")
     config[varname] = value
     
+@Client.on_message(filters.command("delvar") & filters.user(ADMINS))
+async def delvarrrz(bot, message):
+    ms = await message.reply_text(text="<b>Proccesing...</b>")
+    data = message.text        
+    command, varname = data.split(" ")
+    config = app.config()
+    ms.edit(text=f"<code>Deleted A New Config Var {varname}✅️</code>"
+    del config[varname]
