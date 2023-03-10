@@ -24,5 +24,5 @@ async def delvarrrz(bot, message):
     data = message.text        
     command, varname = data.split(" ")
     config = app.config()
-    ms.edit(text=f"<code>Deleted A New Config Var {varname}✅️</code>")
+    await ms.edit(text=f"<code>Deleted A New Config Var {varname}✅️</code>")
     del config[varname]
