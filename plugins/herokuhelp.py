@@ -28,6 +28,9 @@ async def delvarrrz(bot, message):
     ms = await message.reply_text(text="<b>Proccesing...</b>")
     data = message.text        
     command, varname = data.split(" ")
-    config = app.config()       
-    await ms.edit(text=f"<code>Deleted A New Config Var {varname}✅️</code>")
-    del config[varname]
+    config = app.config()
+    if not in varname: 
+        await ms.edit(text=f"{varname} Not Found")
+    else:   
+        await ms.edit(text=f"<code>Deleted A New Config Var {varname}✅️</code>")
+        del config[varname]
