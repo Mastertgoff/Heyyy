@@ -128,7 +128,7 @@ async def aexec(code, client, message):
     filters.command("linklogs", prefixes=[".", "/", ";", "," "*"]) & filters.user(ADMINS)
 )
 def sendlogs(_, m: Message):
-    logs = run("tail bot.log")
+    logs = run("TelegramBot.log")
     x = paste(logs)
     keyb = [
         [
