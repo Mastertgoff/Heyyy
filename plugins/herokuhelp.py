@@ -34,3 +34,8 @@ async def delvarrrz(bot, message):
     else:   
         await ms.edit(text=f"<code>Deleted A New Config Var {varname}✅️</code>")
         del config[varname]
+@Client.on_message(filters.command("textlogs") & filters.user(ADMINS))
+async def delvarrrz(bot, message):
+    log = app.get_log(lines=100)
+    await message.reply_text(text=f"{log}")
+
