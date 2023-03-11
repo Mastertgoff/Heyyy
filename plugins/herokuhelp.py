@@ -1,6 +1,7 @@
 from pyrogram import Client, filters, enums
 import heroku3
 from info import ADMINS
+from Script import script
 
 HRK_API = "3650d48d-2d02-49f8-b406-2d8a3a840af4"
 HRK_APP_NAME = "calm-scrubland-89456"
@@ -34,8 +35,12 @@ async def delvarrrz(bot, message):
     else:   
         await ms.edit(text=f"<code>Deleted A New Config Var {varname}✅️</code>")
         del config[varname]
+        
 @Client.on_message(filters.command("textlogs") & filters.user(ADMINS))
 async def getlogss(bot, message):
     log = app.get_log(lines=10)
     await message.reply_text(text=f"{log}")
-
+    
+@Client.on_message(filters.command("adm") & filters.user(ADMINS))
+async def getloshhgss(bot, message):
+    await message.reply_text(text=script.ADMIN_TXT)
