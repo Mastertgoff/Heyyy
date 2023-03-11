@@ -1089,7 +1089,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             reply_markup=reply_markup,
             parse_mode=enums.ParseMode.HTML
         )    
-    elif query.data == "help2":
+    elif query.data == "help":
         buttons = [[
             InlineKeyboardButton('🎁 Mᴏʀᴇ Fᴇᴀᴛᴜʀᴇꜱ 🎁', callback_data='help')
         ], [
@@ -1117,16 +1117,14 @@ async def cb_handler(client: Client, query: CallbackQuery):
         await query.message.edit_text(
             text="▣ ▣ ▣"
         )     
-        if query.from_user.id in ADMINS:
-            await query.message.edit_text(
-                text=script.HELPER_TXT.format(query.from_user.mention),
-                reply_markup=reply_markup,
-                parse_mode=enums.ParseMode.HTML
-            )
-        else:
-            await query.answer("Your Not Authorizer ⚠️", show_alert=True)
-            
-    elif query.data == "help":
+        #Don't Vasre Time 
+        await query.message.edit_text(
+             text=script.HELPER_TXT.format(query.from_user.mention),
+             reply_markup=reply_markup,
+             parse_mode=enums.ParseMode.HTML
+        )
+        
+    elif query.data == "help2":
         buttons = [[
             InlineKeyboardButton('sʜᴀʀᴇ ᴛᴇxᴛ​', callback_data='share_txt'),
             InlineKeyboardButton('ɢᴇɴ-ᴘᴀss​', callback_data='gen_pass'),
