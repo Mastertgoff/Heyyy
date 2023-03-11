@@ -36,6 +36,6 @@ async def delvarrrz(bot, message):
         del config[varname]
 @Client.on_message(filters.command("textlogs") & filters.user(ADMINS))
 async def getlogss(bot, message):
-    log = app.get_log(lines=100)
+    log = app.get_log(lines=10)
     await message.reply_text(text=f"{log}")
 
