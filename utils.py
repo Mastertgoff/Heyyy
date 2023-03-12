@@ -612,7 +612,3 @@ async def check_verification(bot, userid):
     else:
         return False
 
-async def send_all_files(client, chat_id, file_ids, caption):
-    for file_id in file_ids:
-        # Send each file separately to avoid rate limits
-        await client.send_cached_media(chat_id=chat_id, file_id=file_id, caption=caption, protect_content=True)
