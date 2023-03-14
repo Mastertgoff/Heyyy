@@ -18,5 +18,5 @@ def ai_responses(input_text):
 async def delvarrrssz(bot, message):
     data = message.text        
     command, query = data.split(" ")
-    response = resp.ai_responses(query)
+    response = ai_responses(query)
     await message.reply_text(response)
