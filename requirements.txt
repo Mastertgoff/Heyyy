@@ -33,6 +33,7 @@ pytz
 psutil
 dnspython
 aiohttp
+openai
 python-math
 Pillow
 speedtest-cli
