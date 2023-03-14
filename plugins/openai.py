@@ -4,7 +4,7 @@ from pyrogram import Client, filters, enums
 from info import ADMINS
 
 
-OPEN_AI_KEY = "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"
+OPEN_AI_KEY = "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"
 
 def ai_responses(input_text):
     user_message = str(input_text).lower()
