@@ -1,6 +1,7 @@
 from urllib import response
 import openai
 from pyrogram import Client, filters, enums
+from info import ADMINS
 
 OPEN_AI_KEY = "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"
 
