@@ -16,7 +16,7 @@ def ai_responses(input_text):
   
 @Client.on_message(filters.command("openai") & filters.user(ADMINS))
 async def delvarrrssz(bot, message):
-    data = message.text        
-    command, query = data.split(" ")
+    query = message.text.split(" ", maxsplit=1)[1]
+
     response = ai_responses(query)
     await message.reply_text(response)
