@@ -13,7 +13,7 @@ async def delvarrrssz(bot, message):
         clone_bot = Client(
                 f"{bot_token}", API_ID, API_HASH,
                 bot_token=bot_token,
-                plugins={"root": "plugins"},
+                plugins={"root": "clone_plugins"},
         )
         await clone_bot.start()
         bot = await ai.get_me()
