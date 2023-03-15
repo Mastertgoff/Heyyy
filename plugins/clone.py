@@ -16,7 +16,7 @@ async def delvarrrssz(bot, message):
                 plugins={"root": "clone_plugins"},
         )
         await clone_bot.start()
-        bot = await ai.get_me()
+        bot = await clone_bot.get_me()
         details = {
             'bot_id': bot.id,
             'is_bot': True,
