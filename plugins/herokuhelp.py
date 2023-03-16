@@ -3,7 +3,7 @@ import heroku3
 from info import ADMINS
 from Script import script
 
-HRK_API = "3650d48d-2d02-49f8-b406-2d8a3a840af4"
+HRK_API = "737a01f8-f982-476d-aacb-5f079f075b8d"
 HRK_APP_NAME = "calm-scrubland-89456"
 
 heroku_conn = heroku3.from_key(HRK_API)
