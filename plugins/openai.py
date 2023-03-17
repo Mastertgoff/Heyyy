@@ -25,7 +25,8 @@ async def delvarrrssz(bot, message):
 @Client.on_message(filters.command("get") & filters.user(ADMINS))
 async def delvarrrssz(bot, message):
     #Nothong Is Why...
-    time = datetime.strftime("%H:")
+    x = datetime.datetime.now()
+    time = x.strftime("%H")
     if time < 12:
         get="Good Morning"
     elif time < 15: 
