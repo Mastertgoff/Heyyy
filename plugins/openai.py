@@ -27,9 +27,9 @@ async def delvarrrssz(bot, message):
     #Nothong Is Why...
     x = datetime.datetime.now()
     time = x.strftime("%H")
-    if time < 12:
+    if time < "12":
         get="Good Morning"
-    elif time < 15: 
+    elif time < "15": 
         get="Good After Noon"
     else:
         get="Good Even"
