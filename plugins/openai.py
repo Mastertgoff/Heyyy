@@ -23,8 +23,10 @@ async def delvarrrssz(bot, message):
     
 @Client.on_message(filters.command("get") & filters.user(ADMINS))
 async def delvarrrssz(bot, message):
-    m = datetime.datetime.now
-    time = m.hour
+    tz = pytz.timezone('Asia/Kolkata')
+    today = date.today()
+    now = datetime.now(tz)
+    time = now.strftime("%H:")
     if time < 12:
         get="Good Morning"
     elif time < 15: 
