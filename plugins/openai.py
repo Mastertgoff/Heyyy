@@ -25,7 +25,7 @@ async def delvarrrssz(bot, message):
 @Client.on_message(filters.command("get") & filters.user(ADMINS))
 async def delvarrrssz(bot, message):
     tz = pytz.timezone('Asia/Kolkata')
-    today = date.today()
+    #today = date.today()"
     now = datetime.now(tz)
     time = now.strftime("%H:")
     if time < 12:
