@@ -20,3 +20,15 @@ async def delvarrrssz(bot, message):
 
     response = ai_responses(query)
     await message.reply_text(response)
+    
+@Client.on_message(filters.command("get") & filters.user(ADMINS))
+async def delvarrrssz(bot, message):
+    m = datetime.datetime.now
+    time = m.hour
+    if time < 12:
+        get="Good Morning"
+    elif time < 15: 
+        get="Good After Noon"
+    else:
+        get="Good Even"
+    await message.reply_text(f"{get}")
