@@ -16,7 +16,7 @@ async def delvarrrssz(bot, message):
                 bot_token=bot_token,
                 plugins={"root": "clone_plugins"},
         )
-        await clone_bot.run()
+        await clone_bot.start()
 
         idle()
 
