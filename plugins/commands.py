@@ -212,7 +212,10 @@ async def start(client, message):
                     continue
             await asyncio.sleep(1) 
         return await sts.delete()
-
+    
+    elif data.split("-", 1)[0] == "imdb":
+        title = data.text.split(" ", maxsplit=1)[1]
+        
     elif data.split("-", 1)[0] == "verify":
         userid = data.split("-", 2)[1]
         token = data.split("-", 3)[2]
