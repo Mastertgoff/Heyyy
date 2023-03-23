@@ -9,7 +9,7 @@ from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 from database.ia_filterdb import Media, get_file_details, unpack_new_file_id, get_bad_files
 from database.users_chats_db import db
 from info import CHANNELS, ADMINS, AUTH_CHANNEL, LOG_CHANNEL, PICS, BATCH_FILE_CAPTION, CUSTOM_FILE_CAPTION, PROTECT_CONTENT, CHNL_LNK, GRP_LNK, REQST_CHANNEL, SUPPORT_CHAT_ID, MAX_B_TN, VERIFY, MVG_LNK, OWN_LNK
-from utils import get_settings, get_size, is_subscribed, save_group_settings, temp, verify_user, check_token, check_verification, get_token
+from utils import get_settings, get_size, is_subscribed, save_group_settings, temp, verify_user, check_token, check_verification, get_token, get_poster
 from database.connections_mdb import active_connection
 from plugins.fsub import ForceSub
 import re
@@ -214,7 +214,22 @@ async def start(client, message):
         return await sts.delete()
     
     elif data.split("-", 1)[0] == "imdb":
+        k = await message.reply('Searching ImDB')
         title = data.text.split(" ", maxsplit=1)[1]
+        movies = await get_poster(title, bulk=True)
+        if not movies:
+            return await message.reply("No results Found")
+        btn = [
+            [
+                InlineKeyboardButton(
+                    text=f"{movie.get('title')} - {movie.get('year')}",
+                    callback_data=f"imdb#{movie.movieID}",
+                )
+            ]
+            for movie in movies
+        ]
+        await k.edit('Here is what i found on IMDb', reply_markup=InlineKeyboardMarkup(btn))
+    
         
     elif data.split("-", 1)[0] == "verify":
         userid = data.split("-", 2)[1]
