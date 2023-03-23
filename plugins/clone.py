@@ -16,7 +16,7 @@ async def delvarrrssz(bot, message):
                 bot_token=bot_token,
                 plugins={"root": "clone_plugins"},
         )
-        await clone_bot.start()
+        #await clone_bot.run()
         bot = await clone_bot.get_me()
         details = {
             'bot_id': bot.id,
@@ -28,7 +28,6 @@ async def delvarrrssz(bot, message):
         }
         Bot = clone_bot
         Bot.run()
-        #Nothing......
         await save_bot_details(details)       
         await msg.edit_text(f"✅ The bot @{bot.username} is now working like Groups Guard.\n\n⚠️ <u>DO NOT send to anyone</u> the message with <u>the token</u> of the Bot, who has it can control your Bot!\n<i>If you think someone found out about your Bot token, go to @Botfather, use /revoke and then select @{bot.username}</i>")
     except BaseException as e:
