@@ -216,7 +216,7 @@ async def start(client, message):
     
     elif data.split("-", 1)[0] == "imdb":
         k = await message.reply('Searching ImDB')
-        title = data.split(" ", maxsplit=1)[1]
+        title = data.split("-", maxsplit=1)[1]
         movies = await get_poster(title, bulk=True)
         if not movies:
             return await message.reply("No results Found")
