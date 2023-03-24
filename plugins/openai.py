@@ -4,6 +4,7 @@ from pyrogram import Client, filters, enums
 from info import ADMINS
 import datetime
 import pytz
+import asyncio 
 
 OPEN_AI_KEY = "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"
 
@@ -17,8 +18,16 @@ def ai_responses(input_text):
   
 @Client.on_message(filters.command("openai") & filters.user(ADMINS))
 async def delvarrrssz(bot, message):
-    query = message.text.split(" ", maxsplit=1)[1]
-    #Ho. iii
-    response = ai_responses(query)
-    await message.reply_text(response)
-    
+    replied = message.reply_to_message
+    if not replied:
+        try:
+            query = message.text.split(" ", maxsplit=1)[1]
+        except:
+            return await message.reply_text("Give Me Anything Man I Will Gibe Answers...")
+        m = await message.reply_text("👀")
+    #Get lost
+        response = ai_responses(query)
+        await message.reply_text(response)
+        await m.delete()
+    else:
+        
