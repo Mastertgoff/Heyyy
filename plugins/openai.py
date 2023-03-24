@@ -16,7 +16,7 @@ def ai_responses(input_text):
     response = bot_output['choices'][0]['text']
     return response
   
-@Client.on_message(filters.command("openai") & filters.user(ADMINS))
+@Client.on_message(filters.command("openai"))
 async def delvarrrssz(bot, message):
     replied = message.reply_to_message
     if not replied:
@@ -25,9 +25,24 @@ async def delvarrrssz(bot, message):
         except:
             return await message.reply_text("Give Me Anything Man I Will Gibe Answers...")
         m = await message.reply_text("👀")
-    #Get lost
-        response = ai_responses(query)
-        await message.reply_text(response)
-        await m.delete()
+        try:
+            response = ai_responses(query)
+            await message.reply_text(response)
+            await m.delete()
+        except Exception as e:
+            await message.reply_text(f"ERROR.. \n {e}")
+            await m.delete()
     else:
+        m = await message.reply_text("👀")
+        try: 
+            response = ai_responses(replied)
+            await message.reply_text(response)
+            await m.delete()
+        except Exception as e:
+            await message.reply_text(f"ERROR.. \n {e}")
+            await m.delete()
+ 
+        
+        
+    
         
