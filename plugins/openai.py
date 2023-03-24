@@ -5,7 +5,7 @@ from info import ADMINS
 import datetime
 import pytz
 
-OPEN_AI_KEY = "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"
+OPEN_AI_KEY = "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"
 
 def ai_responses(input_text):
     user_message = str(input_text).lower()
