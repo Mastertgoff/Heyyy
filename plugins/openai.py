@@ -6,7 +6,7 @@ import datetime
 import pytz
 import os
 
-OPEN_AI_KEY = os.environ.get('AI_KEY', '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',)
+OPEN_AI_KEY = os.environ.get('AI_KEY', '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')
 
 def ai_responses(input_text):
     user_message = str(input_text).lower()
