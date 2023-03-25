@@ -218,8 +218,8 @@ async def start(client, message):
         k = await message.reply('Searching ImDB')
         #Rmcb
         main_data = data.replace(" ","-")
-        title = main_data.split("#")
-        await k.edit(f"Searching ImDB For {title}")
+        l,title = main_data.split("#")
+        await k.edit(f"Searching {i} For {title}")
         movies = await get_poster(title, bulk=True)
         if not movies:
             return await message.reply("No results Found")
