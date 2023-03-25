@@ -4,8 +4,9 @@ from pyrogram import Client, filters, enums
 from info import ADMINS
 import datetime
 import pytz
+import os
 
-OPEN_AI_KEY = "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"
+OPEN_AI_KEY = os.environ.get('AI_KEY', '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',)
 
 def ai_responses(input_text):
     user_message = str(input_text).lower()
