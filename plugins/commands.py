@@ -214,11 +214,11 @@ async def start(client, message):
             await asyncio.sleep(1) 
         return await sts.delete()
     
-    elif data.split("-", 1)[0] == "#imdb":
+    elif data.split("-", 1)[0] == "imdb":
         k = await message.reply('Searching ImDB')
         #Rmcb
         main_data = data.replace(" ","-")
-        imdb, title = main_data.split("#")
+        title = main_data.split("#")
         await k.edit(f"Searching ImDB For {title}")
         movies = await get_poster(title, bulk=True)
         if not movies:
