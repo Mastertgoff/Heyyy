@@ -2,7 +2,7 @@ from pyrogram import Client, filters, enums
 from info import ADMINS, API_ID, API_HASH
 import re
 from pyrogram.errors.exceptions.bad_request_400 import AccessTokenExpired, AccessTokenInvalid
-from utlis import clone_temp
+#from utlis import clone_temp
 from database.clone_botsdb import db
 
 @Client.on_message(filters.command("clone") & filters.user(ADMINS))
