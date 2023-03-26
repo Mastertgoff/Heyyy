@@ -1,4 +1,5 @@
 import logging
+from pyrogram import Client
 from pyrogram.errors import InputUserDeactivated, UserNotParticipant, FloodWait, UserIsBlocked, PeerIdInvalid, AccessTokenExpired
 from info import AUTH_CHANNEL, LONG_IMDB_DESCRIPTION, MAX_LIST_ELM, SHORTLINK_URL, SHORTLINK_API, LOG_CHANNEL, ADMINS, REQ_CHANNEL, API_ID, API_HASH
 from database.join_reqs import JoinReqs as db2
