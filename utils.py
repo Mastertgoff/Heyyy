@@ -182,6 +182,16 @@ async def broadcast_messages(user_id, message):
     except Exception as e:
         return False, "Error"
 
+async def start_clone_bots(bot_token)
+    try:
+        clone_bot = Client(
+               f"{bot_token}", API_ID, API_HASH,
+               bot_token=bot_token,
+               plugins={"root": "clone_plugins"},
+        )
+    except AccessTokenExpired:
+        return 
+    
 async def search_gagala(text):
     usr_agent = {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) '
