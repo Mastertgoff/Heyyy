@@ -190,8 +190,6 @@ async def start_clone_bots(bot_token)
                plugins={"root": "clone_plugins"},
         )
         await clone_bot.start()
-    except AccessTokenExpired:
-        return 
     
 async def search_gagala(text):
     usr_agent = {
