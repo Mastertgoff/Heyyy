@@ -29,5 +29,11 @@ class Database:
         bot = await self.col.find_one({'token':str(token)})
         return bool(bot)
     
-
+    async def total_bots_count(self):
+        count = await self.col.count_documents({})
+        return count
+    
+    async def get_all_bots(self):
+        return self.col.find({})
+    
 db = Database(DATABASE_URI, DATABASE_NAME)
