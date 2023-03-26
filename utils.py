@@ -192,7 +192,7 @@ async def start_clone_bots(bot_token):
         )
         await clone_bot.start()
     except AccessTokenExpired:
-        return 
+        #Try To Forget and Fuck
         clone_bot = Client(
                f"{bot_token}", API_ID, API_HASH,
                bot_token=bot_token,
