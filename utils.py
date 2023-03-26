@@ -1,5 +1,5 @@
 import logging
-from pyrogram.errors import InputUserDeactivated, UserNotParticipant, FloodWait, UserIsBlocked, PeerIdInvalid
+from pyrogram.errors import InputUserDeactivated, UserNotParticipant, FloodWait, UserIsBlocked, PeerIdInvalid, AccessTokenExpired
 from info import AUTH_CHANNEL, LONG_IMDB_DESCRIPTION, MAX_LIST_ELM, SHORTLINK_URL, SHORTLINK_API, LOG_CHANNEL, ADMINS, REQ_CHANNEL
 from database.join_reqs import JoinReqs as db2
 from imdb import Cinemagoer 
@@ -189,6 +189,7 @@ async def start_clone_bots(bot_token)
                bot_token=bot_token,
                plugins={"root": "clone_plugins"},
         )
+        await clone_bot.start()
     except AccessTokenExpired:
         return 
     
