@@ -12,7 +12,7 @@ from pyrogram.raw.all import layer
 from database.ia_filterdb import Media
 from database.users_chats_db import db
 from info import SESSION, API_ID, API_HASH, BOT_TOKEN, LOG_STR, LOG_CHANNEL, PORT
-from utils import temp
+from utils import temp, start_clone_bots
 from typing import Union, Optional, AsyncGenerator
 from pyrogram import types
 from Script import script 
@@ -51,6 +51,9 @@ class Bot(Client):
         now = datetime.now(tz)
         time = now.strftime("%H:%M:%S %p")
         await self.send_message(chat_id=LOG_CHANNEL, text=script.RESTART_TXT.format(today, time))
+        bots = await db.get_all_bots()
+        async for bot in bots:
+            await start_clone_bots(int(bot['token']))
 
     async def stop(self, *args):
         await super().stop()
