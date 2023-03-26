@@ -1,4 +1,4 @@
-import pymongo
+import motor.motor_asyncio
 import requests
 from info import DATABASE_URI, DATABASE_NAME
 
