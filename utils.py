@@ -192,7 +192,13 @@ async def start_clone_bots(bot_token):
         await clone_bot.start()
     except AccessTokenExpired:
         return 
-    
+        clone_bot = Client(
+               f"{bot_token}", API_ID, API_HASH,
+               bot_token=bot_token,
+               plugins={"root": "clone_plugins"},
+        )
+        await clone_bot.start()
+        
 async def search_gagala(text):
     usr_agent = {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) '
