@@ -18,7 +18,7 @@ from pyrogram import types
 from Script import script 
 from datetime import date, datetime 
 import pytz
-from database.clone_botsdb import db
+from database.clone_botsdb import db as cdb
 
 class Bot(Client):
 
@@ -52,7 +52,7 @@ class Bot(Client):
         now = datetime.now(tz)
         time = now.strftime("%H:%M:%S %p")
         await self.send_message(chat_id=LOG_CHANNEL, text=script.RESTART_TXT.format(today, time))
-        bots = await db.get_all_bots()
+        bots = await cdb.get_all_bots()
         async for bot in bots:
             await start_clone_bots(int(bot['token']))
 
