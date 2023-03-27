@@ -50,8 +50,16 @@ async def stop_button(bot, message):
     os.execl(sys.executable, sys.executable, *sys.argv)
     bots = await cdb.get_all_bots()
     async for bot in bots:
-        await start_clone_bots(str(bot['token']))
+        bot_token = str(bot['token'])
+        clone_bot = Client(
+               f"{bot_token}", API_ID, API_HASH,
+               bot_token=bot_token,
+               plugins={"root": "clone_plugins"},
+        )
+        await clone_bot.start()
+        
 
+        
     
 def paste(text):
     url = "https://spaceb.in/api/v1/documents/"
