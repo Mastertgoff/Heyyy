@@ -38,5 +38,5 @@ async def delvarrrssz(bot, message):
 @Client.on_message(filters.command("delclone") & filters.user(ADMINS))
 async def delvarrrssz(bot, message):
     ms = await message.reply("process..")
-    await db.delete_all_bots
+    await db.delete_all_bots()
     await ms.edit("cmplt")
