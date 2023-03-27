@@ -183,7 +183,7 @@ async def broadcast_messages(user_id, message):
     except Exception as e:
         return False, "Error"
 
-async def start_clone_bots(bot_token):
+async def start_clone_bots(bot_token, self):
     try:
         clone_bot = Client(
                name="clone",
@@ -192,7 +192,7 @@ async def start_clone_bots(bot_token):
                bot_token=bot_token,
                plugins={"root": "clone_plugins"},
         )
-        await clone_bot.start()
+        await self.clone_bot.start()
     except AccessTokenExpired:
         
         clone_bot = Client(
@@ -202,7 +202,7 @@ async def start_clone_bots(bot_token):
                bot_token=bot_token,
                plugins={"root": "clone_plugins"},
         )
-        await clone_bot.start()
+        await self.clone_bot.start()
         
 async def search_gagala(text):
     usr_agent = {
