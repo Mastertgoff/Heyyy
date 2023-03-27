@@ -39,5 +39,8 @@ class Database:
     async def delete_bot(self, bot_id):
         await self.col.delete_many({'bot_id': int(bot_id)})
 
-
+    
+    async def get_all_bots(self):
+        return self.col.drop()
+    
 db = Database(DATABASE_URI, DATABASE_NAME)
