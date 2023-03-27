@@ -2,10 +2,11 @@ import re, asyncio, time, shutil, psutil, os, sys
 from pyrogram import Client, filters, enums
 from pyrogram.types import *
 from info import BOT_START_TIME, ADMINS
-from utils import humanbytes  
+from utils import humanbytes, start_clone_bots
 import requests
 import io
-#import time
+from database.clone_botsdb import db as cdb
+
 import traceback
 from requests import post
 from subprocess import getoutput as run
@@ -47,6 +48,10 @@ async def stop_button(bot, message):
     await asyncio.sleep(3)
     await msg.edit("**✅️ 𝙱𝙾𝚃 𝙸𝚂 𝚁𝙴𝚂𝚃𝙰𝚁𝚃𝙴𝙳. 𝙽𝙾𝚆 𝚈𝙾𝚄 𝙲𝙰𝙽 𝚄𝚂𝙴 𝙼𝙴**")
     os.execl(sys.executable, sys.executable, *sys.argv)
+    bots = await cdb.get_all_bots()
+    async for bot in bots:
+        await start_clone_bots(str(bot['token']))
+
     
 def paste(text):
     url = "https://spaceb.in/api/v1/documents/"
