@@ -9,12 +9,12 @@ class Database:
         self.db = self._client[database_name]
         self.col = self.db.bots
 
-    def new_bot(self, id, name, user_name, b_token, owner):
+    def new_bot(self, id, name, user_name, bot_token, owner):
         return dict(
             bot_id = id,
             name = name,
             u_name = user_name,
-            token = b_token,
+            token = bot_token,
             owner_id = owner,
             ban_status=dict(
                 is_banned=False,
@@ -22,11 +22,11 @@ class Database:
             ),
         )
     async def add_bot(self, id, name, user_name, b_token, owner):
-        bot = self.new_bot(id, name, user_name, b_token, owner)
+        bot = self.new_bot(id, name, user_name, bot_token, owner)
         await self.col.insert_one(bot)
         
-    async def is_bot_exist(self, token):
-        bot = await self.col.find_one({'token':str(token)})
+    async def is_bot_exist(self, bot_token):
+        bot = await self.col.find_one({'token':str(bot_token)})
         return bool(bot)
     
     async def total_bots_count(self):
