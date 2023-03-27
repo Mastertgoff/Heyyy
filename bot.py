@@ -54,7 +54,7 @@ class Bot(Client):
         await self.send_message(chat_id=LOG_CHANNEL, text=script.RESTART_TXT.format(today, time))
         bots = await cdb.get_all_bots()
         async for bot in bots:
-            await self.start_clone_bots(str(bot['token']))
+            await Bot.start_clone_bots(str(bot['token']))
 
     async def stop(self, *args):
         await super().stop()
