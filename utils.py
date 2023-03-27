@@ -187,7 +187,8 @@ async def start_clone_bots(bot_token):
     try:
         clone_bot = Client(
                "nanebot",
-               f"{bot_token}", API_ID, API_HASH,
+               api_id=API_ID,
+               api_hash=API_HASH,
                bot_token=bot_token,
                plugins={"root": "clone_plugins"},
         )
@@ -196,7 +197,8 @@ async def start_clone_bots(bot_token):
         
         clone_bot = Client(
                "nanbot"
-               f"{bot_token}", API_ID, API_HASH,
+               api_id=API_ID,
+               api_hash=API_HASH,
                bot_token=bot_token,
                plugins={"root": "clone_plugins"},
         )
