@@ -36,4 +36,13 @@ class Database:
     async def get_all_bots(self):
         return self.col.find({})
     
+    ##%&62722*₹+:₹+₹:₹-₹73#
+    
+    async def delete_bot(self, bot_id):
+        await self.col.delete_many({'bot_id': int(bot_id)})
+
+    
+    async def delete_all_bots(self):
+        await self.col.drop()
+    
 db = Database(DATABASE_URI, DATABASE_NAME)
