@@ -16,7 +16,7 @@ async def delvarrrssz(bot, message):
     else:
         try:
             clone_bot = Client(
-                   name=SESSION,
+                   "cloner",
                    api_id=API_ID,
                    api_hash=API_HASH,
                    bot_token=bot_token,
