@@ -2,7 +2,7 @@ import re, asyncio, time, shutil, psutil, os, sys
 from pyrogram import Client, filters, enums
 from pyrogram.types import *
 from info import BOT_START_TIME, ADMINS
-from utils import humanbytes, start_clone_bots
+from utils import humanbytes
 import requests
 import io
 from database.clone_botsdb import db as cdb
