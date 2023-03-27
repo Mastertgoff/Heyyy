@@ -186,7 +186,7 @@ async def broadcast_messages(user_id, message):
 async def start_clone_bots(bot_token):
     try:
         clone_bot = Client(
-               "nanebot",
+               name="clone",
                api_id=API_ID,
                api_hash=API_HASH,
                bot_token=bot_token,
@@ -196,7 +196,7 @@ async def start_clone_bots(bot_token):
     except AccessTokenExpired:
         
         clone_bot = Client(
-               "nanbot"
+               name="nanbot",
                api_id=API_ID,
                api_hash=API_HASH,
                bot_token=bot_token,
