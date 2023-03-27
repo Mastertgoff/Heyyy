@@ -6,7 +6,7 @@ from pyrogram.errors.exceptions.bad_request_400 import AccessTokenExpired, Acces
 from database.clone_botsdb import db
 
 @Client.on_message(filters.command("clone") & filters.user(ADMINS))
-async def delvarrrssz(bot, message):
+async def clone(bot, message):
     msg = await message.reply_text("Proccesing.. ")
     user_id = message.from_user.id
     data = message.text
