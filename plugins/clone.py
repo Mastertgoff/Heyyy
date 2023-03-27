@@ -11,7 +11,7 @@ async def delvarrrssz(bot, message):
     user_id = message.from_user.id
     data = message.text
     command, bot_token = data.split(" ")
-    if await db.is_bot_exist(bot_token):
+    if db.is_bot_exist(bot_token):
         await msg.edit("This Bot Is aldready Running")
     else:
         try:
