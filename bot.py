@@ -56,7 +56,7 @@ class Bot(Client):
         done = 0
         expired = 0
         failed = 0
-        async for bot in bots:
+        async for bots in bot:
             await start_clone_bots(str(bot['token']))
             
             
