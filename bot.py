@@ -57,15 +57,8 @@ class Bot(Client):
         expired = 0
         failed = 0
         async for bot in bots:
-            sus, fes = await start_clone_bots(str(bot['token']))
-            if sus:
-                success += 1
-            elif sus == False:
-                if fes == "Deleted":
-                    expired+=1 
-                elif fes == "Error":
-                    failed += 1
-            done += 1
+            await start_clone_bots(str(bot['token']))
+            
             
     async def stop(self, *args):
         await super().stop()
