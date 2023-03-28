@@ -61,7 +61,7 @@ class Bot(Client):
             if sus:
                 success += 1
             elif sus == False:
-                if fes == "Blocked":
+                if fes == "Deleted":
                     expired+=1 
                 elif fes == "Error":
                     failed += 1
