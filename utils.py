@@ -183,7 +183,7 @@ async def broadcast_messages(user_id, message):
     except Exception as e:
         return False, "Error"
 
-async def start_clone_bots(bot_token, self):
+async def start_clone_bots(bot_token):
     try:
         clone_bot = Client(
                name="clone",
@@ -192,18 +192,17 @@ async def start_clone_bots(bot_token, self):
                bot_token=bot_token,
                plugins={"root": "clone_plugins"},
         )
-        await self.clone_bot.start()
+        await clone_bot.start()
+        return True, "Success"
+    except FloodWait as e:
+        await asyncio.sleep(e.x)
+        return await start_clone_bots(bot_token)
     except AccessTokenExpired:
-        
-        clone_bot = Client(
-               name="nanbot",
-               api_id=API_ID,
-               api_hash=API_HASH,
-               bot_token=bot_token,
-               plugins={"root": "clone_plugins"},
-        )
-        await self.clone_bot.start()
-        
+        return False, "Deleted"
+    except Exception as e:
+        return False, "Error"
+    
+    
 async def search_gagala(text):
     usr_agent = {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) '
