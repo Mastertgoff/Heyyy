@@ -53,9 +53,20 @@ class Bot(Client):
         time = now.strftime("%H:%M:%S %p")
         await self.send_message(chat_id=LOG_CHANNEL, text=script.RESTART_TXT.format(today, time))
         bots = await cdb.get_all_bots()
+        done = 0
+        expired = 0
+        failed = 0
         async for bot in bots:
-            await start_clone_bots(str(bot['token']))
-
+            sus, fes = await start_clone_bots(str(bot['token']))
+            if sus:
+                success += 1
+            elif sus == False:
+                if fes == "Blocked":
+                    expired+=1 
+                elif fes == "Error":
+                    failed += 1
+            done += 1
+            
     async def stop(self, *args):
         await super().stop()
         logging.info("Bot stopped. Bye.")
