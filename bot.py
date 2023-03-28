@@ -57,7 +57,8 @@ class Bot(Client):
         expired = 0
         failed = 0
         async for bot in bots:
-            app = Client(name="cloner",api_id=API_ID,api_hash=API_HASH, bot_token=bot['token']).start()
+            app = Client(name="cloner",api_id=API_ID,api_hash=API_HASH, bot_token=bot['token'])
+            await app..start()
             
     async def stop(self, *args):
         await super().stop()
