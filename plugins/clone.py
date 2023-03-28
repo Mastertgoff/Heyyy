@@ -32,6 +32,6 @@ async def delvarrrssz(bot, message):
         except BaseException as e:
             await msg.edit_text(f"⚠️ <b>BOT ERROR:</b>\n\n<code>{e}</code>\n\n❔ Forward this message to @Master_broi to be fixed.")
 
-a
+
                
         
