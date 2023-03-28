@@ -45,4 +45,10 @@ class Database:
     async def delete_all_bots(self):
         await self.col.drop()
     
+    
+    async def get_all_bots_token(self):
+        bots = await self.col.find({'token'})
+        bot = await get_all_bots()
+        bot_tokens =  [bot['token'] async for bots in bot]
+        
 db = Database(DATABASE_URI, DATABASE_NAME)
