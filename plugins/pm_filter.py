@@ -44,6 +44,7 @@ async def pm_filter(client, message):
 
 @Client.on_message(filters.group & filters.text & filters.incoming)
 async def give_filter(client, message):
+    umb = await message.reply_text("<b>Cʜᴇᴄᴋɪɴɢ Yᴏᴜʀ Mᴏᴠɪᴇ Pʟᴇᴀꜱ W𝟾..😻</b>")
     if message.chat.id != SUPPORT_CHAT_ID:
         await global_filters(client, message)
     manual = await manual_filters(client, message)
@@ -51,15 +52,15 @@ async def give_filter(client, message):
         settings = await get_settings(message.chat.id)
         try:
             if settings['auto_ffilter']:
-                umb = await message.reply_text("<b>Cʜᴇᴄᴋɪɴɢ Yᴏᴜʀ Mᴏᴠɪᴇ Pʟᴇᴀꜱ W𝟾..😻</b>")
-                await auto_filter(client, message, umb)
+                await umb.delete()
+                await auto_filter(client, message)
         except KeyError:
             grpid = await active_connection(str(message.from_user.id))
             await save_group_settings(grpid, 'auto_ffilter', True)
             settings = await get_settings(message.chat.id)
             if settings['auto_ffilter']:
-                umb = await message.reply_text("<b>Cʜᴇᴄᴋɪɴɢ Yᴏᴜʀ Mᴏᴠɪᴇ Pʟᴇᴀꜱ W𝟾..😻</b>")
-                await auto_filter(client, message, umb) 
+                await umb.delete()
+                await auto_filter(client, message) 
 
 @Client.on_message(filters.private & filters.text & filters.incoming)
 async def pm_text(bot, message):
@@ -1707,7 +1708,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
     await query.answer(MSG_ALRT)
 
     
-async def auto_filter(client, msg, umb, spoll=False):
+async def auto_filter(client, msg, spoll=False):
     reqstr1 = msg.from_user.id if msg.from_user else 0
     reqstr = await client.get_users(reqstr1)
     if not spoll:
@@ -1726,7 +1727,7 @@ async def auto_filter(client, msg, umb, spoll=False):
                 else:
                     if NO_RESULTS_MSG:
                         await client.send_message(chat_id=LOG_CHANNEL, text=(script.NORSLTS.format(reqstr.id, reqstr.mention, search)))
-                        await umb.delete()
+                        #await umb.delete()
                     return
         else:
             return
@@ -1896,7 +1897,7 @@ async def auto_filter(client, msg, umb, spoll=False):
             **locals()
         )
     else:
-        cap = f"<b>📟 Movie Name : {search}\n\n┏ 🤴 ᴀsᴋᴇᴅ ʙʏ : {message.from_user.mention}\n┣ ᴘᴏᴡᴇʀᴇᴅ ʙʏ: ᴡᴀᴢᴇᴇᴍ​⚡️\n┗ 🍁 ɢʀᴏᴜᴘ​ : 𝐅𝐢𝐥𝐢𝐦 𝐇𝐨𝐦𝐞\n\nJoin Now <a href='https://t.me/sinimapremi '>Main Channel</a> </b>"
+        cap = f"<b>📟 Movie Name : {search}\n\n┏ 🤴 ᴀsᴋᴇᴅ ʙʏ : {message.from_user.mention}\n┣ ᴘᴏᴡᴇʀᴇᴅ ʙʏ: ᴡᴀᴢᴇᴇᴍ​⚡️\n┗ 🍁 ɢʀᴏᴜᴘ​ : 𝐅𝐢𝐥𝐢𝐦 𝐇𝐨𝐦𝐞\n\nJoin Now :<a href='https://t.me/sinimapremi'>Main Channel</a> </b>"
     if imdb and imdb.get('poster'):
         try:
             if message.chat.id == SUPPORT_CHAT_ID:
