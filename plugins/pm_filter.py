@@ -51,13 +51,15 @@ async def give_filter(client, message):
         settings = await get_settings(message.chat.id)
         try:
             if settings['auto_ffilter']:
-                await auto_filter(client, message)
+                umb = await message.reply_text("<b>Cʜᴇᴄᴋɪɴɢ Yᴏᴜʀ Mᴏᴠɪᴇ Pʟᴇᴀꜱ W𝟾..😻</b>")
+                await auto_filter(client, message, umb)
         except KeyError:
             grpid = await active_connection(str(message.from_user.id))
             await save_group_settings(grpid, 'auto_ffilter', True)
             settings = await get_settings(message.chat.id)
             if settings['auto_ffilter']:
-                await auto_filter(client, message) 
+                umb = await message.reply_text("<b>Cʜᴇᴄᴋɪɴɢ Yᴏᴜʀ Mᴏᴠɪᴇ Pʟᴇᴀꜱ W𝟾..😻</b>")
+                await auto_filter(client, message, umb) 
 
 @Client.on_message(filters.private & filters.text & filters.incoming)
 async def pm_text(bot, message):
