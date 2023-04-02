@@ -1867,7 +1867,7 @@ async def auto_filter(client, msg, spoll=False):
             )
 
     btn.insert(0, [
-        InlineKeyboardButton("SENDALL", callback_data=f"send_all#{send_all.strip()}#{key}")
+        InlineKeyboardButton(f'  {search}  ', 'qinfo')
     ])
 
     if offset != "":
