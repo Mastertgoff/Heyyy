@@ -342,6 +342,21 @@ async def advantage_spoll_choker(bot, query):
 async def cb_handler(client: Client, query: CallbackQuery):
     if query.data == "close_data":
         await query.message.delete()
+    elif query.data == "sendall":
+        # get the list of files to send
+        file_list = get_file_list()
+        
+        # divide the file list into chunks of 30 files or less
+        file_chunks = [file_list[i:i+MAX_FILES_PER_CLICK] for i in range(0, len(file_list), MAX_FILES_PER_CLICK)]
+        
+        # send each chunk of files as a separate message
+        for files in file_chunks:
+            
+            # send the files as a media group
+            await client.send_media_group(
+                chat_id=query.from_user.id,
+                media=[{"type": "document", "media": file_id, "caption": caption} for file_id in files]
+            )
     elif query.data == "gfiltersdeleteallconfirm":
         await del_allg(query.message, 'gfilters')
         await query.answer("Done !")
