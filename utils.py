@@ -612,3 +612,6 @@ async def check_verification(bot, userid):
     else:
         return False
 
+def get_file_list():
+    # TODO: replace this with code to generate the file list
+    return ["file_id_1", "file_id_2", "file_id_3", ...]
