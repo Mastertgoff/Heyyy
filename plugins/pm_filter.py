@@ -17,7 +17,7 @@ from pyrogram import Client, filters, enums
 from pyrogram.errors import FloodWait, UserIsBlocked, MessageNotModified, PeerIdInvalid
 from utils import get_size, is_subscribed, get_poster, search_gagala, temp, get_settings, save_group_settings, get_shortlink
 from database.users_chats_db import db
-from database.ia_filterdb import Media, get_file_details, get_search_results, get_bad_files
+from database.ia_filterdb import Media, get_file_details, get_search_results, get_bad_files, get_file_list
 from database.filters_mdb import (
     del_all,
     find_filter,
@@ -74,7 +74,28 @@ async def pm_text(bot, message):
         chat_id=LOG_CHANNEL,
         text=f"<b>#𝐏𝐌_𝐌𝐒𝐆\n\nNᴀᴍᴇ : {user}\n\nID : {user_id}\n\nMᴇssᴀɢᴇ : {content}</b>"
     )
-
+    
+@Client.on_callback_query(sendall)
+async def send_all(client, query):
+    # get the data associated with the button
+    data = query.data
+    
+    if data == "sendall":
+        # get the list of files to send
+        file_list = get_file_list()
+        
+        # divide the file list into chunks of 30 files or less
+        file_chunks = [file_list[i:i+MAX_FILES_PER_CLICK] for i in range(0, len(file_list), MAX_FILES_PER_CLICK)]
+        
+        # send each chunk of files as a separate message
+        for files in file_chunks:
+            
+            # send the files as a media group
+            await client.send_media_group(
+                chat_id=query.from_user.id,
+                media=[{"type": "document", "media": file_id, "caption": caption} for file_id in files]
+            )
+    
 @Client.on_callback_query(filters.regex(r"^next"))
 async def next_page(bot, query):
     ident, req, key, offset = query.data.split("_")
