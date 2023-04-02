@@ -35,6 +35,7 @@ logger.setLevel(logging.ERROR)
 
 BUTTONS = {}
 SPELL_CHECK = {}
+MAX_FILES_PER_CLICK = 30
 
 @Client.on_message(filters.private & filters.text & filters.incoming)
 async def pm_filter(client, message):
