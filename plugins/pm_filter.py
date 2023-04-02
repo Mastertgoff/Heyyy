@@ -75,7 +75,7 @@ async def pm_text(bot, message):
         text=f"<b>#𝐏𝐌_𝐌𝐒𝐆\n\nNᴀᴍᴇ : {user}\n\nID : {user_id}\n\nMᴇssᴀɢᴇ : {content}</b>"
     )
     
-@Client.on_callback_query(sendall)
+@Client.on_callback_query(filters.regex(r"^sendall"))
 async def send_all(client, query):
     # get the data associated with the button
     data = query.data
