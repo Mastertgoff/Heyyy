@@ -593,6 +593,7 @@ async def verify_user(bot, userid, token):
     tz = pytz.timezone('Asia/Kolkata')
     today = date.today()
     VERIFIED[user.id] = str(today)
+    
 async def send_all(bot, userid, files, ident):
     for file in files:
         f_caption = file.caption
@@ -613,6 +614,7 @@ async def send_all(bot, userid, files, ident):
             file_id=file.file_id,
             caption=f_caption,
             protect_content=True if ident == "filep" else False,
+        )
             
             
 
