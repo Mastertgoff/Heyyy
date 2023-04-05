@@ -76,27 +76,7 @@ async def pm_text(bot, message):
         text=f"<b>#𝐏𝐌_𝐌𝐒𝐆\n\nNᴀᴍᴇ : {user}\n\nID : {user_id}\n\nMᴇssᴀɢᴇ : {content}</b>"
     )
     
-@Client.on_callback_query(filters.regex(r"^send_all"))
-async def send_all(client, query):
-    # get the data associated with the button
-    data = query.data
-    
-    if data == "sendall":
-        # get the list of files to send
-        file_list = get_file_list()
-        
-        # divide the file list into chunks of 30 files or less
-        file_chunks = [file_list[i:i+MAX_FILES_PER_CLICK] for i in range(0, len(file_list), MAX_FILES_PER_CLICK)]
-        
-        # send each chunk of files as a separate message
-        for files in file_chunks:
-            
-            # send the files as a media group
-            await client.send_media_group(
-                chat_id=query.from_user.id,
-                media=[{"type": "document", "media": file_id, "caption": caption} for file_id in files]
-            )
-    
+
 @Client.on_callback_query(filters.regex(r"^next"))
 async def next_page(bot, query):
     ident, req, key, offset = query.data.split("_")
@@ -342,21 +322,15 @@ async def advantage_spoll_choker(bot, query):
 async def cb_handler(client: Client, query: CallbackQuery):
     if query.data == "close_data":
         await query.message.delete()
-    elif query.data == "sendall":
-        # get the list of files to send
-        file_list = get_file_list()
-        
-        # divide the file list into chunks of 30 files or less
-        file_chunks = [file_list[i:i+MAX_FILES_PER_CLICK] for i in range(0, len(file_list), MAX_FILES_PER_CLICK)]
-        
-        # send each chunk of files as a separate message
-        for files in file_chunks:
-            
-            # send the files as a media group
-            await client.send_media_group(
-                chat_id=query.from_user.id,
-                media=[{"type": "document", "media": file_id, "caption": caption} for file_id in files]
-            )
+    elif query.data.startswith("send_fall"):
+        temp, ident, key, offset = query.data.split("#")
+        search = BUTTONS.get(key)
+        if not search:
+            await query.answer(script.OLD_ALRT_TXT.format(query.from_user.first_name),show_alert=True)
+            return
+        files, n_offset, total = await get_search_results(query.message.chat.id, search, offset=offset, filter=True)
+        await send_all(client, query.from_user.id, files, ident)
+        await query.answer(f"Hey {query.from_user.first_name}, All files on this page has been sent successfully to your PM !")
     elif query.data == "gfiltersdeleteallconfirm":
         await del_allg(query.message, 'gfilters')
         await query.answer("Done !")
