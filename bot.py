@@ -52,14 +52,8 @@ class Bot(Client):
         now = datetime.now(tz)
         time = now.strftime("%H:%M:%S %p")
         await self.send_message(chat_id=LOG_CHANNEL, text=script.RESTART_TXT.format(today, time))
-        bots = await cdb.get_all_bots()
-        done = 0
-        expired = 0
-        failed = 0
-        async for bot in bots:
-            app = Client(name="cloner",api_id=API_ID,api_hash=API_HASH, bot_token=bot['token'])
-            await app.start()
-            
+        
+        
     async def stop(self, *args):
         await super().stop()
         logging.info("Bot stopped. Bye.")
